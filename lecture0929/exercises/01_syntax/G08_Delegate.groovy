@@ -3,13 +3,13 @@ def jeff = [name : 'Jeff', age : 38]
 def jess = [name : 'Jess', age : 33]
 
 def process(person, code) {
-//    code.delegate = person    
-//    code.resolveStrategy = Closure.DELEGATE_FIRST
+    code.delegate = person    
+    //code.resolveStrategy = Closure.DELEGATE_FIRST
     code.call()
-//    person.with(code)
+    //person.with(code)
 }
 
-name = "Noname"
+//name = "Noname"
 process(joe, {println name})
 //process(jeff, {println age})
 

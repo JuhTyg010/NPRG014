@@ -3,6 +3,7 @@ class Plane {
     private boolean inFlight = false
     private boolean engineOn = false
     private int altitude = 0
+    
 
     private void startEngine() {
         println 'Starting the engine'
@@ -22,6 +23,13 @@ class Plane {
     private void climbTo(int altitude) {
         println "Changing altitude to $altitude"
         this.altitude = altitude
+    }
+    private void performCommand(String name, Closure command){
+        println(name);
+        this.with(command);
+    }
+    def call(name, command){
+        this.performCommand(name, command);
     }
 }
 
@@ -46,6 +54,6 @@ println '*** We are in flight now ***'
 plane.performCommand('Land', land)
 
 //TASK Make the following code pass, too. Use the call() method to handle function calls on the Plane objects.
-//plane('Take off', takeoff)
-//println '*** We are in flight now ***'
-//plane('Land', land)
+plane('Take off', takeoff)
+println '*** We are in flight now ***'
+plane('Land', land)
